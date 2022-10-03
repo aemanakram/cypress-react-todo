@@ -1,0 +1,14 @@
+import App from './App'
+    
+let input_field_selector = '.input.form-control'
+let add_todo_button_selector = '.submit-button'
+let todo_item_selector = 'div.card'
+
+describe('<App>', () => {
+  it('mounts', () => {
+    cy.mount(<App />)
+    cy.get(input_field_selector).type('Adding new task');
+    cy.get(add_todo_button_selector).click();
+    cy.get('.container').find(todo_item_selector).should('have.length', 2);
+  }) 
+})
